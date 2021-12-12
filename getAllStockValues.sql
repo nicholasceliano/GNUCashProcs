@@ -20,7 +20,7 @@ SELECT
 		JOIN commodities c on a.commodity_guid = c.guid
 		JOIN splits s on s.account_guid = a.guid
 	WHERE account_type = 'STOCK' AND (c.namespace = 'NYSE' OR c.namespace = 'Commodity')
-	GROUP BY a.commodity_guid
+	GROUP BY a.commodity_guid, p.recentPrice
 	HAVING stockQty > 0;
 END$$
 DELIMITER ;
